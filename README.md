@@ -58,3 +58,66 @@ Calculates the distance between movies in a 5000-dimensional space and identifie
 ```bash
 git clone [https://github.com/AnkurSingh23/End-to-End-Movie-Recommendation-System.git](https://github.com/AnkurSingh23/End-to-End-Movie-Recommendation-System.git)
 cd End-to-End-Movie-Recommendation-System
+
+2️⃣ Install Dependencies
+Bash
+pip install -r requirements.txt
+3️⃣ Generate ML Artifacts 🧪
+The model files (.pkl) are not included in this repository due to GitHub's file size limits.
+
+👉 To generate them:
+
+Open the notebook: Notebook/EDA_and_Model.ipynb
+
+Run all cells. This will generate:
+
+movies.pkl
+
+similarity.pkl
+
+knn.pkl
+
+vectors.pkl
+
+Create the artifacts folder: mkdir artifacts
+
+Move all generated files into: artifacts/
+
+4️⃣ Run the Application 🚀
+Bash
+python manage.py runserver
+5️⃣ Open in Browser 🌐
+Visit: http://127.0.0.1:8000/ 🍿
+
+📂 Project Structure
+Bash
+├── artifacts/           # Generated ML models (.pkl)
+├── movie_recommender/   # Django project configuration
+├── recommender/         # Main app (views, utils, templates)
+├── Notebook/            # Data processing & model building
+├── manage.py
+└── requirements.txt
+⚠️ Model Files Notice
+The .pkl files are excluded because:
+
+GitHub has a 100MB file size limit.
+
+These files are large (~150–180MB each).
+
+Standard Practice: Models can be regenerated easily using the provided notebook.
+
+🔮 Future Improvements
+[ ] 🎬 Movie Posters: Fetching real-time visuals using TMDb API.
+
+[ ] ⭐ Hybrid System: Combining collaborative filtering with content-based.
+
+[ ] 🔍 Advanced Autocomplete: Enhanced search suggestions.
+
+[ ] ☁️ Deployment: Hosting on Render or AWS.
+
+<p align="center">
+<b>Developed by Ankur Singh</b>
+
+
+<i>Machine Learning & Backend Enthusiast</i>
+</p>
