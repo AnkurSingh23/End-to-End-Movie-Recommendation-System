@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="icon" href="https://fav.farm/🎬" />
+
+    <style>
+        :root {
+            --netflix-red: #e50914;
+            --bg-dark: #141414;
+            --card-bg: #222222;
+            --text-light: #ffffff;
+            --accent-glow: rgba(229, 9, 20, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Navbar style */
+        .navbar {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, transparent);
+            padding: 20px 0;
+        }
+
+        .brand-logo {
+            color: var(--netflix-red);
+            font-weight: 800;
+            font-size: 1.8rem;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        /* Glassmorphism Card */
+        .main-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .form-control, .form-select {
+            background-color: #333;
+            border: 1px solid #444;
+            color: white;
+            padding: 12px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #454545;
+            color: white;
+            border-color: var(--netflix-red);
+            box-shadow: 0 0 0 0.25rem var(--accent-glow);
+        }
+
+        .btn-recommend {
+            background-color: var(--netflix-red);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-recommend:hover {
+            background-color: #ff0a16;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+
+        /* Movie Recommendation Cards */
+        .movie-card {
+            background: #1f1f1f;
+            border-left: 4px solid var(--netflix-red);
+            padding: 20px;
+            border-radius: 8px;
+            height: 100%;
+            transition: transform 0.2s ease, background 0.2s ease;
+            cursor: default;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.03);
+            background: #282828;
+        }
+
+        .section-title {
+            font-weight: 700;
+            border-bottom: 2px solid var(--netflix-red);
+            display: inline-block;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+        }
+        .hero-title {
+        font-size: 4rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        margin-bottom: 0;
+        background: linear-gradient(180deg, #ffffff 30%, #a1a1a1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0px 4px 10px rgba(229, 9, 20, 0.4));
+    }
+
+    .text-outline {
+        -webkit-text-stroke: 1.5px #e50914;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .letter-spacing {
+        letter-spacing: 5px;
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+
+    /* Mobile responsive font */
+    @media (max-width: 768px) {
+        .hero-title { font-size: 2.5rem; }
+    }
+    </style>
+</head>
+<body>
+<div class="text-center mb-5">
+    <h1 class="hero-title">MOVI<span class="text-outline">GENIUS</span></h1>
+    <p class="text-secondary text-uppercase fw-bold letter-spacing">AI-Powered Recommendations</p>
+</div>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="main-card p-4 p-md-5 mb-5">
+                <h2 class="text-center mb-4">What's Next to Watch?</h2>
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label class="form-label text-secondary small text-uppercase fw-bold">Enter a Movie You Like</label>
+                        <input list="movies" name="movie"
+                               class="form-control form-control-lg"
+                               placeholder="e.g. Inception, The Dark Knight..."
+                               value="{{ selected_movie }}" required>
+                        <datalist id="movies">
+                            {% for movie in movies %}
+                                <option value="{{ movie }}">
+                            {% endfor %}
+                        </datalist>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-secondary small text-uppercase fw-bold">Algorithm</label>
+                        <select name="model" class="form-select">
+                            <option value="cosine" {% if selected_model == "cosine" %}selected{% endif %}>Cosine Similarity (Content-Based)</option>
+                            <option value="knn" {% if selected_model == "knn" %}selected{% endif %}>K-Nearest Neighbors</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-recommend w-100 btn-lg">Get Recommendations</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if recommendations %}
+    <div class="row">
+        <div class="col-12">
+            <h3 class="section-title">Because you liked "{{ selected_movie }}"</h3>
+        </div>
+        {% for movie in recommendations %}
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="movie-card shadow-sm d-flex align-items-center">
+                <div class="fw-bold">{{ movie }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<footer class="text-center py-5 text-secondary mt-5">
+    <small>© 2024 MovieRecommender AI</small>
+</footer>
+
+</body>
+</html>
