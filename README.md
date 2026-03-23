@@ -1,4 +1,4 @@
-# <p align="center">🎬 MOVI<span style="color:#e50914">GENIUS</span></p>
+# <p align="center"> MOVI<span style="color:#e50914">GENIUS</span></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Maintained-Yes-00c8ff?style=for-the-badge" alt="Maintained">
@@ -13,7 +13,7 @@
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 MoviGenius transforms raw TMDb metadata into intelligent recommendations. Unlike basic scripts, this is a **Complete End-to-End Pipeline** that processes thousands of data points (Cast, Director, Genres, Keywords) to predict user preferences using text vectorization.
 
 > [!IMPORTANT]
@@ -21,12 +21,12 @@ MoviGenius transforms raw TMDb metadata into intelligent recommendations. Unlike
 
 ---
 
-## 🚀 Key Features
-* 🎭 **Dual Model Selection:** Choose between Cosine Similarity & KNN algorithms.
-* 🔍 **Smart Search:** Interactive dropdown with autocomplete for 4800+ movies.
-* 🌑 **Cinematic UI:** A dark-mode, Netflix-inspired interface with Glassmorphism effects.
-* 🧪 **NLP-Powered:** Advanced feature engineering using `CountVectorizer`.
-* ⚡ **Optimized Inference:** Millisecond response times using pre-computed similarity matrices.
+## Key Features
+*  **Dual Model Selection:** Choose between Cosine Similarity & KNN algorithms.
+*  **Smart Search:** Interactive dropdown with autocomplete for 4800+ movies.
+*  **Cinematic UI:** A dark-mode, Netflix-inspired interface with Glassmorphism effects.
+*  **NLP-Powered:** Advanced feature engineering using `CountVectorizer`.
+*  **Optimized Inference:** Millisecond response times using pre-computed similarity matrices.
 
 ---
 
@@ -41,7 +41,7 @@ MoviGenius transforms raw TMDb metadata into intelligent recommendations. Unlike
 
 ---
 
-## 🧠 Algorithms & Math
+## Algorithms & Math
 
 ### 🔹 Cosine Similarity
 Measures the cosine of the angle between two movie vectors. It focuses on the "direction" of the tags rather than the magnitude.
@@ -77,9 +77,9 @@ pip install -r requirements.txt
 
 ### 3️⃣ Generate ML Artifacts 🧪
 
-> ⚠️ The model files (`.pkl`) are not included due to GitHub size limits.
+>  The model files (`.pkl`) are not included due to GitHub size limits.
 
-#### 👉 Follow these steps:
+#### Follow these steps:
 
 1. Open the notebook:
 
@@ -112,7 +112,7 @@ artifacts/
 
 ---
 
-### 4️⃣ Run the Application 🚀
+### Run the Application 🚀
 
 ```bash
 python manage.py runserver
@@ -120,7 +120,7 @@ python manage.py runserver
 
 ---
 
-### 5️⃣ Open in Browser 🌐
+### Open in Browser 
 
 👉 http://127.0.0.1:8000/
 
@@ -139,7 +139,7 @@ python manage.py runserver
 
 ---
 
-## ⚠️ Model Files Notice
+## Model Files Notice
 
 The `.pkl` files are excluded because:
 
@@ -153,13 +153,13 @@ The `.pkl` files are excluded because:
 
 ## 🔮 Future Improvements
 
-* 🎬 Movie Posters using TMDb API
-* ⭐ Hybrid Recommendation System
-* 🔍 Advanced Autocomplete Search
-* ☁️ Deployment (Render / AWS)
+* Movie Posters using TMDb API
+* Hybrid Recommendation System
+* Advanced Autocomplete Search
+* Deployment (Render / AWS)
 
 ---
 
 <p align="center">
-  <b>Developed by Ankur Singh 🚀</b>
+  <b>Developed by Ankur Singh </b>
 </p>
