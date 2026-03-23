@@ -54,70 +54,112 @@ Calculates the distance between movies in a 5000-dimensional space and identifie
 
 ## ⚙️ Setup Guide
 
-### 1️⃣ Clone Repo
+---
+
+## ⚙️ Setup Guide
+
+### 1️⃣ Clone Repository
+
 ```bash
-git clone [https://github.com/AnkurSingh23/End-to-End-Movie-Recommendation-System.git](https://github.com/AnkurSingh23/End-to-End-Movie-Recommendation-System.git)
+git clone https://github.com/AnkurSingh23/End-to-End-Movie-Recommendation-System.git
 cd End-to-End-Movie-Recommendation-System
+```
 
-2️⃣ Install Dependencies
-Bash
+---
+
+### 2️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
-3️⃣ Generate ML Artifacts 🧪
-The model files (.pkl) are not included in this repository due to GitHub's file size limits.
+```
 
-👉 To generate them:
+---
 
-Open the notebook: Notebook/EDA_and_Model.ipynb
+### 3️⃣ Generate ML Artifacts 🧪
 
-Run all cells. This will generate:
+> ⚠️ The model files (`.pkl`) are not included due to GitHub size limits.
 
+#### 👉 Follow these steps:
+
+1. Open the notebook:
+
+```bash
+Notebook/EDA_and_Model.ipynb
+```
+
+2. Run all cells
+
+3. This will generate:
+
+```
 movies.pkl
-
 similarity.pkl
-
 knn.pkl
-
 vectors.pkl
+```
 
-Create the artifacts folder: mkdir artifacts
+4. Create artifacts folder:
 
-Move all generated files into: artifacts/
+```bash
+mkdir artifacts
+```
 
-4️⃣ Run the Application 🚀
-Bash
+5. Move files into:
+
+```bash
+artifacts/
+```
+
+---
+
+### 4️⃣ Run the Application 🚀
+
+```bash
 python manage.py runserver
-5️⃣ Open in Browser 🌐
-Visit: http://127.0.0.1:8000/ 🍿
+```
 
-📂 Project Structure
-Bash
+---
+
+### 5️⃣ Open in Browser 🌐
+
+👉 http://127.0.0.1:8000/
+
+---
+
+## 📂 Project Structure
+
+```bash
 ├── artifacts/           # Generated ML models (.pkl)
 ├── movie_recommender/   # Django project configuration
 ├── recommender/         # Main app (views, utils, templates)
 ├── Notebook/            # Data processing & model building
 ├── manage.py
 └── requirements.txt
-⚠️ Model Files Notice
-The .pkl files are excluded because:
+```
 
-GitHub has a 100MB file size limit.
+---
 
-These files are large (~150–180MB each).
+## ⚠️ Model Files Notice
 
-Standard Practice: Models can be regenerated easily using the provided notebook.
+The `.pkl` files are excluded because:
 
-🔮 Future Improvements
-[ ] 🎬 Movie Posters: Fetching real-time visuals using TMDb API.
+* GitHub has a **100MB file size limit**
+* These files are large (~150–180MB each)
 
-[ ] ⭐ Hybrid System: Combining collaborative filtering with content-based.
+👉 This is standard practice in ML projects
+👉 Models can be regenerated using the notebook
 
-[ ] 🔍 Advanced Autocomplete: Enhanced search suggestions.
+---
 
-[ ] ☁️ Deployment: Hosting on Render or AWS.
+## 🔮 Future Improvements
+
+* 🎬 Movie Posters using TMDb API
+* ⭐ Hybrid Recommendation System
+* 🔍 Advanced Autocomplete Search
+* ☁️ Deployment (Render / AWS)
+
+---
 
 <p align="center">
-<b>Developed by Ankur Singh</b>
-
-
-<i>Machine Learning & Backend Enthusiast</i>
+  <b>Developed by Ankur Singh 🚀</b>
 </p>
